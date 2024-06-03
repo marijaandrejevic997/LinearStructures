@@ -1,2 +1,2 @@
-# BinaryTree
-Binary tree implementation and the most important algorithims
+# Linear Data Structures implementation
+Array implementation and the most needed algorithms implemented
