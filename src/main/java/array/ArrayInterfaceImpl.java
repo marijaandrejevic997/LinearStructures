@@ -1,6 +1,7 @@
 package array;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class ArrayInterfaceImpl implements ArrayInterface{
 
@@ -84,4 +85,48 @@ public class ArrayInterfaceImpl implements ArrayInterface{
         arr = Arrays.copyOf(arr, arr.length - 1); //to remove element
         traverseArray();
     }
+
+    @Override
+    public void reverseArrayExtra(int[] arr) {
+        int reversedArray[] = new int[arr.length];
+        for (int i = arr.length-1; i>=0; i--) {
+            reversedArray[arr.length-1-i] = arr[i];
+        }
+
+        traverseCustom(reversedArray);
+    }
+
+    //complexity O(n)
+
+    @Override
+    public void reverseArrayLoop(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        while (start < end) {
+            int pom = arr[start];
+            arr[start] = arr[end];
+            arr[end] = pom;
+            start++;
+            end--;
+        }
+        traverseCustom(arr);
+    }
+
+    //complexity O(n)
+
+    @Override
+    public void reverseArrayStack(int[] arr) {
+        Stack<Integer> stack = new Stack<>();
+        for (int element: arr) {
+            stack.push(element);
+        }
+
+        for (int i = 0; i<arr.length; i++) {
+            arr[i] = stack.pop();
+        }
+
+        traverseCustom(arr);
+    }
+
+    //complexity O(n)
 }

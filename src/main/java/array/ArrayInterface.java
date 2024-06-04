@@ -14,6 +14,12 @@ public interface ArrayInterface {
     void deleteElement(int key);
 
     //reverse
+    //* using an extra array
+    void reverseArrayExtra(int[] arr);
+    //* using a loop
+    void reverseArrayLoop(int[] arr);
+    //* using stack
+    void reverseArrayStack(int[] arr);
 
     //sorting
 
