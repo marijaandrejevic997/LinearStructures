@@ -2,11 +2,21 @@ package array;
 
 public interface ArrayInterface {
 
-    public void setRoot (String key);
+    //basic array operations
+    void traverseArray();
 
-    public void setLeftElem (String key, int rootElem);
+    void printArrayRightRotatedKtimes(int k);
 
-    public void setRightElem (String key, int rootElem);
+    int findElementByValue(int key);
 
-    public void writeTree ();
+    void insertInAnyPosition(int x, int pos);
+
+    void deleteElement(int key);
+
+    //reverse
+
+    //sorting
+
+
+
 }

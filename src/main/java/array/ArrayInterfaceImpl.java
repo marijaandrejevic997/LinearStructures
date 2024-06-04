@@ -1,61 +1,87 @@
 package array;
 
-/**
- * elements are counted using index within current array
- * if root has index p :
- *      - left child index: 2*p + 1
- *      - right child index: 2*p + 2
- */
-public class ArrayInterfaceImpl implements  ArrayInterface {
+import java.util.Arrays;
 
-    private int numElem;
-    private String[] elements;
+public class ArrayInterfaceImpl implements ArrayInterface{
 
+    int arr[];
+
+    public ArrayInterfaceImpl(int[] arr) {
+        this.arr = arr;
+    }
 
 
-    public ArrayInterfaceImpl(int numElem) {
-        this.numElem = numElem;
-        this.elements = new String[numElem];
+    @Override
+    public void traverseArray() {
+        for (int el: arr) {
+            System.out.println(el + " ");
+        }
+    }
+
+    private void traverseCustom(int[] custom) {
+        for (int el: custom) {
+            System.out.println(el + " ");
+        }
     }
 
     @Override
-    public void setRoot(String key) {
-        elements[0] = key;
-    }
+    public void printArrayRightRotatedKtimes(int k) {
 
-    //overriding functions
-    @Override
-    public void setLeftElem(String key, int rootElem) {
-        if (elements [rootElem] == null) {
-            System.out.println("Root element can't be found.");
-            return;
+        //this is using new structure printing array right rotated k times
+        /*int [] newArr = new int[arr.length];
+        //Arrays.fill(newArr, 0);
+        for (int i = 0; i< arr.length; i++) {
+            newArr[(i+k)%newArr.length] = arr[i];
         }
 
-        elements [2*rootElem + 1] = key;
-    }
+        traverseCustom(newArr);*/
 
-    @Override
-    public void setRightElem(String key, int rootElem) {
-        if (elements [rootElem] == null) {
-            System.out.println("Root element can't be found.");
-            return;
+        //time complexity O(2n)
+
+
+        //this is just printing array right rotated k times
+        for (int i = 0; i< arr.length; i++) {
+            System.out.print(arr[(i+k+1) % arr.length] + " ");
         }
 
-        elements [2*rootElem + 2] = key;
+        //time complexity O(n)
     }
 
-    /**
-     * This method will write element, if exists.
-     * If not, it will write - as sign that child doesn't exist
-     */
     @Override
-    public void writeTree() {
-        for (int i = 0; i < numElem; i++) {
-            if (elements[i] != null) {
-                System.out.println(elements[i]);
-            } else {
-                System.out.println("-");
+    public int findElementByValue(int key) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == key) {
+                return i;
             }
         }
+        return -1;
+    }
+
+    @Override
+    public void insertInAnyPosition(int x, int pos) {
+        for (int i = arr.length - 1; i >= pos; i--) {
+            if (i + 1 <= arr.length - 1) {
+                arr[i + 1] = arr[i];
+            } else {
+                System.out.println("Index out of bounds");
+            }
+        }
+        arr[pos] = x;
+    }
+
+    @Override
+    public void deleteElement(int key) {
+        //first find element
+        int index = findElementByValue(key);
+        if (index == -1) {
+            System.out.println("Element not found....");
+            return;
+        }
+
+        for (int i = index; i < arr.length - 1; i++) {
+            arr[i] = arr[i+1];
+        }
+        arr = Arrays.copyOf(arr, arr.length - 1); //to remove element
+        traverseArray();
     }
 }
