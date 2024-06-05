@@ -96,7 +96,13 @@ public class ArrayTest {
     public void mergeSortTest() {
         int arr[] = {12,11,13,5, 6,7};
         ArrayInterfaceImpl arrayImplBuilder = new ArrayInterfaceImpl(arr);
-       // arrayImplBuilder.mergeSort(arr, 0, arr.length-1);
+       arrayImplBuilder.mergeSort(arr, 0, arr.length-1);
+    }
+
+    @Test
+    public void quickSortTest() {
+        int arr[] = {12,11,13,5, 6,7};
+        ArrayInterfaceImpl arrayImplBuilder = new ArrayInterfaceImpl(arr);
         arrayImplBuilder.quickSort(arr, 0, arr.length - 1);
     }
 
