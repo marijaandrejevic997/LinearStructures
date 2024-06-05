@@ -2,11 +2,32 @@ package array;
 
 public interface ArrayInterface {
 
-    public void setRoot (String key);
+    //basic array operations
+    void traverseArray();
 
-    public void setLeftElem (String key, int rootElem);
+    void printArrayRightRotatedKtimes(int k);
 
-    public void setRightElem (String key, int rootElem);
+    int findElementByValue(int key);
 
-    public void writeTree ();
+    void insertInAnyPosition(int x, int pos);
+
+    void deleteElement(int key);
+
+    //reverse
+    //* using an extra array
+    void reverseArrayExtra(int[] arr);
+    //* using a loop
+    void reverseArrayLoop(int[] arr);
+    //* using stack
+    void reverseArrayStack(int[] arr);
+
+    //sorting
+    void bubbleSort(int[] arr);
+
+    void selectionSort(int[] arr);
+
+    void insertionSort(int[] arr);
+
+
+
 }
