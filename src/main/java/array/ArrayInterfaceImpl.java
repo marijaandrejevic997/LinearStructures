@@ -127,6 +127,71 @@ public class ArrayInterfaceImpl implements ArrayInterface{
 
         traverseCustom(arr);
     }
-
     //complexity O(n)
+
+
+    /*
+    the best case scenario - elements are already sorted,
+    the worst case scenario O(N*N)
+     */
+    @Override
+    public void bubbleSort(int[] arr) {
+        boolean swapped;
+        for (int i = 0; i< arr.length - 1; i++) {
+            swapped = false;
+            for (int j = i+1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    //swap
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                    swapped = true;
+                }
+            }
+
+            if (!swapped) {
+                break;
+            }
+        }
+
+        traverseCustom(arr);
+    }
+
+    /*
+    never make more than O(N) swaps and can be useful when memory writing is costly
+     */
+    @Override
+    public void selectionSort(int[] arr) {
+        for (int i = 0; i<arr.length - 1; i++) {
+            int min_idx = i;
+            for (int j = i+1; j < arr.length; j++) {
+                if (arr[j] < arr[min_idx]) {
+                    min_idx = j;
+                }
+            }
+
+            int temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+
+        traverseCustom(arr);
+    }
+
+    @Override
+    public void insertionSort(int[] arr) {
+        for (int i = 1; i< arr.length; i++) {
+            int temp = arr[i];
+            int j = i-1;
+            while (j >= 0 && arr[j] > temp) {
+                arr[j+1] = arr[j];
+                j=j-1;
+            }
+            arr[j+1] = temp;
+        }
+
+        traverseCustom(arr);
+    }
+
+
 }

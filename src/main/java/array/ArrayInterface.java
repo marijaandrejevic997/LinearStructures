@@ -22,6 +22,11 @@ public interface ArrayInterface {
     void reverseArrayStack(int[] arr);
 
     //sorting
+    void bubbleSort(int[] arr);
+
+    void selectionSort(int[] arr);
+
+    void insertionSort(int[] arr);
 
 
 

@@ -71,6 +71,27 @@ public class ArrayTest {
         arrayImplBuilder.reverseArrayStack(arr);
     }
 
+    @Test
+    public void bubbleSortTest() {
+        int arr[] = {64, 34, 25, 12, 22, 11, 90};
+        ArrayInterfaceImpl arrayImplBuilder = new ArrayInterfaceImpl(arr);
+        arrayImplBuilder.bubbleSort(arr);
+    }
+
+    @Test
+    public void selectionSortTest() {
+        int arr[] = {64,24,12,22,11};
+        ArrayInterfaceImpl arrayImplBuilder = new ArrayInterfaceImpl(arr);
+        arrayImplBuilder.selectionSort(arr);
+    }
+
+    @Test
+    public void insertionSortTest() {
+        int arr[] = {12,11,13,5,6};
+        ArrayInterfaceImpl arrayImplBuilder = new ArrayInterfaceImpl(arr);
+        arrayImplBuilder.insertionSort(arr);
+    }
+
 
 
 }
