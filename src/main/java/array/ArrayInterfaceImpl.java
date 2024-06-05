@@ -193,5 +193,83 @@ public class ArrayInterfaceImpl implements ArrayInterface{
         traverseCustom(arr);
     }
 
+    @Override
+    public void mergeSort(int[] arr, int l1, int l2) {
+        //middle point
+        int m = l1 + (l2-l1)/2;
+        if (l1<l2) {
+            mergeSort(arr, l1, m);
+            mergeSort(arr, m + 1, l2);
+
+            //number of elements first array - left
+            int n1 = (m - l1 + 1);
+            //number of elements second array-right
+            int n2 = l2 - m;
+
+            int[] leftArray = new int[m - l1 + 1];
+            int[] rightArray = new int[l2 - m];
+
+            for (int i = 0; i < (m - l1 + 1); i++) {
+                leftArray[i] = arr[l1 + i];
+            }
+            for (int j = 0; j < (l2 - m); j++) {
+                rightArray[j] = arr[m + 1 + j];
+            }
+
+            int i = 0, j = 0;
+            int k = l1;
+            while (i < n1 && j < n2) {
+                if (leftArray[i] <= rightArray[j]) {
+                    arr[k] = leftArray[i];
+                    i++;
+                } else {
+                    arr[k] = rightArray[j];
+                    j++;
+                }
+                k++;
+            }
+
+            while (i < n1) {
+                arr[k] = leftArray[i];
+                i++;
+                k++;
+            }
+            while (j < n2) {
+                arr[k] = rightArray[j];
+                j++;
+                k++;
+            }
+        }
+
+    }
+
+    private int partition (int [] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = (low-1);
+        for (int j = low; j<=high - 1; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        int temp = arr[i+1];
+        arr[i+1] = arr[high];
+        arr[high] = temp;
+        return i+1;
+    }
+
+    @Override
+    public void quickSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivotElement = partition(arr, low, high);
+
+            quickSort(arr, low, pivotElement - 1);
+            quickSort(arr, pivotElement + 1, high);
+        }
+    }
+
 
 }

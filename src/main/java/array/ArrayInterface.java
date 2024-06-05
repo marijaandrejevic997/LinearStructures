@@ -28,6 +28,9 @@ public interface ArrayInterface {
 
     void insertionSort(int[] arr);
 
+    void mergeSort(int[] arr, int l1, int l2);
+
+    void quickSort(int[] arr, int low, int high);
 
 
 }
